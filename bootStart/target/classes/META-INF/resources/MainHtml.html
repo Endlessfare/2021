@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery/jquery.min.js"></script>
+    <script src="angularjs/angular.min.js"></script>
+    <script src="js/controller/mainController.js"></script>
+    <script src="js/controller/js.Service/crudService.js"></script>
+    <script src="js/controller/CRUDController.js"></script>
+
+
+</head>
+<body ng-app="bootTest" ng-controller="crudController" ng-init="findAll()">
+    <table>
+        <tr>
+            <td >id</td>
+            <td >名称</td>
+            <td >价格</td>
+        </tr>
+        <tr ng-repeat="products in currentProductList">
+            <td >{{products.pid}}</td>
+            <td >{{products.pname}}</td>
+            <td >{{products.price}}</td>
+        </tr>
+    </table>
+    {{searchMap.Pname}},{{searchMap.price_low}},{{searchMap.price_high}}
+    <hr/>
+    <form>
+        <table>
+            <tr>
+                <td> 按name搜索(模糊) ：</td>
+                <td>name:<input type="text" ng-model="searchMap.Pname"></td>
+
+            </tr>
+            <tr>
+                <td> 按价格搜索(区间) ：</td>
+                <td><input type="text" ng-model="searchMap.price_low">----<input type="text" ng-model="searchMap.price_high"></td>
+
+            </tr>
+            <tr>
+                <td><input type="button" ng-click="findAll()" value="查找"></td>
+            </tr>
+        </table>
+    </form>
+    <form>
+        <table>
+            <tr>
+                <td> 按id删除 ：</td>
+                <td>id:<input type="text" ng-model="deletePid"></td>
+
+            </tr>
+            <tr>
+                <td><input type="button" ng-click="deleteOne()"value="删除"></td>
+            </tr>
+        </table>
+    </form>
+    <form>
+        <table>
+            <tr>
+                <td> 有ID修改,无ID新增 ：</td>
+                <td>id:<input type="text" ng-model="product.pid"></td>
+
+            </tr>
+            <tr>
+                <td>name:<input type="text" ng-model="product.pname"></td>
+            </tr>
+            <tr>
+                <td>price:<input type="text" ng-model="product.price"></td>
+            </tr>
+            <tr>
+                <td><input type="button" ng-click="save()"></td>
+            </tr>
+        </table>
+    </form>
+    <img src="prase4-2.oss-cn-beijing.aliyuncs.com/pic/rua.jpg" width="620px" height="780px"/>
+</body>
+</html>
